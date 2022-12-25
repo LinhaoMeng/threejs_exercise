@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     'start': './src/start.js',
     'modelloader': './src/modelloader.js',
+    'light': './src/light.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -17,6 +18,11 @@ module.exports = {
       title: 'modelloader',
       filename: 'modelloader.html',
       chunks: ['modelloader'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'light',
+      filename: 'light.html',
+      chunks: ['light'],
     }),
     new HtmlWebpackPlugin({
       title: 'start',

@@ -38,6 +38,7 @@ loader.load('resources/mip-low-res-enlarged.png', (texture) => {
 const texture = loader.load('resources/mip-low-res-enlarged.png', (texture) => {
   const material = new THREE.MeshBasicMaterial({
     map: texture,
+    side: THREE.DoubleSide,
   })
   const planegeometry = new THREE.PlaneGeometry(1, 20, 1, 10);
   const plane = new THREE.Mesh(planegeometry, material);
@@ -130,7 +131,7 @@ function animate(time) {
   }
 
   planes.forEach((plane) => {
-    plane.rotation.x = (time * 1000) % 4000 <= 2000 ? 1.3 + 0.2 / 2000 * (time * 1000 % 4000) : 1.5 - 0.2 / 2000 * ((time * 1000 - 2000) % 4000);
+    plane.rotation.x = (time * 1000) % 4000 <= 2000 ? 1.4 + 0.2 / 2000 * (time * 1000 % 4000) : 1.6 - 0.2 / 2000 * ((time * 1000 - 2000) % 4000);
   })
 
   cubes.forEach((cube, i) => {
@@ -180,6 +181,7 @@ class StringToNumberHelper {
     return this.obj[this.prop];
   }
   set value(v) {
+    console.log(v, THREE.NearestFilter);
     this.obj[this.prop] = parseFloat(v);
   }
 }
